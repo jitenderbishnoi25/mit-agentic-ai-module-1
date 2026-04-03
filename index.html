@@ -20,18 +20,27 @@
     <main class="container">
         <header class="header">
             <h1 class="title">LLM Pricing Comparison</h1>
-            <p class="subtitle">Analyze token usage and API costs across different GPT model generations</p>
+            <p class="subtitle">Estimating cross-platform LLM cost based on reference GPT token usage</p>
         </header>
+
+        <div class="context-card">
+            <h3>About This Exercise (Renting a Car Scenario)</h3>
+            <ul>
+                <li><strong>1. Standard Transaction:</strong> A typical business question was asked: <em>"What is the process I need to go through to rent a car: prerequisites? documents to present? information to have on hand?"</em></li>
+                <li><strong>2. Token Count:</strong> The input and output were measured using a tokenizer to capture the distinct hardware token footprint utilized by different GPT generations.</li>
+                <li><strong>3. Cost Estimation:</strong> The captured token footprints were applied to a pricing calculator to evaluate the staggering range of costs if run across <strong>various industry LLM systems</strong> at different interaction scales.</li>
+            </ul>
+        </div>
 
         <section class="table-container">
             <table class="pricing-table">
                 <thead>
                     <tr>
-                        <th>GPT Model Group</th>
+                        <th>Reference GPT Model</th>
                         <th>Prompt Tokens</th>
                         <th>Response Tokens</th>
-                        <th>API Calls</th>
-                        <th>Pricing Estimate</th>
+                        <th>Expected API Calls</th>
+                        <th>Cost Range (Various LLMs)</th>
                     </tr>
                 </thead>
                 <tbody>
