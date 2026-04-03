@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Pricing & Token Usage Calculator</title>
+    <meta name="description" content="Compare token usage and API pricing for various GPT models including GPT-5, O1/3, GPT-4, and Legacy models.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background-elements">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <main class="container">
+        <header class="header">
+            <h1 class="title">LLM Pricing Comparison</h1>
+            <p class="subtitle">Analyze token usage and API costs across different GPT model generations</p>
+        </header>
+
+        <section class="table-container">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>GPT Model Group</th>
+                        <th>Prompt Tokens</th>
+                        <th>Response Tokens</th>
+                        <th>API Calls</th>
+                        <th>Pricing Estimate</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- GPT-5.x & O1/3 -->
+                    <tr class="group-start group-1">
+                        <td rowspan="4" class="model-col">
+                            <div class="model-badge new">GPT-5.x & O1/3</div>
+                        </td>
+                        <td rowspan="4" class="token-col">26</td>
+                        <td rowspan="4" class="token-col">553</td>
+                        <td>10,000</td>
+                        <td class="price-col">$1.68 - $139.55</td>
+                    </tr>
+                    <tr class="group-1">
+                        <td>100,000</td>
+                        <td class="price-col">$16.79 - $1395.50</td>
+                    </tr>
+                    <tr class="group-1">
+                        <td>500,000</td>
+                        <td class="price-col">$83.92 - $6977.50</td>
+                    </tr>
+                    <tr class="group-end group-1">
+                        <td>1,000,000</td>
+                        <td class="price-col">$167.85 - $13955.00</td>
+                    </tr>
+
+                    <!-- GPT-4 & GPT-3.5 -->
+                    <tr class="group-start group-2">
+                        <td rowspan="4" class="model-col">
+                            <div class="model-badge standard">GPT-4 & 3.5 <span>(Legacy)</span></div>
+                        </td>
+                        <td rowspan="4" class="token-col">26</td>
+                        <td rowspan="4" class="token-col">572</td>
+                        <td>10,000</td>
+                        <td class="price-col">$1.74 - $144.30</td>
+                    </tr>
+                    <tr class="group-2">
+                        <td>100,000</td>
+                        <td class="price-col">$17.36 - $1443.00</td>
+                    </tr>
+                    <tr class="group-2">
+                        <td>500,000</td>
+                        <td class="price-col">$86.77 - $7215.00</td>
+                    </tr>
+                    <tr class="group-end group-2">
+                        <td>1,000,000</td>
+                        <td class="price-col">$173.55 - $14430.00</td>
+                    </tr>
+
+                    <!-- GPT-3 -->
+                    <tr class="group-start group-3">
+                        <td rowspan="4" class="model-col">
+                            <div class="model-badge legacy">GPT-3 <span>(Legacy)</span></div>
+                        </td>
+                        <td rowspan="4" class="token-col">27</td>
+                        <td rowspan="4" class="token-col">680</td>
+                        <td>10,000</td>
+                        <td class="price-col">$2.06 - $171.35</td>
+                    </tr>
+                    <tr class="group-3">
+                        <td>100,000</td>
+                        <td class="price-col">$20.60 - $1713.48</td>
+                    </tr>
+                    <tr class="group-3">
+                        <td>500,000</td>
+                        <td class="price-col">$103.01 - $8567.50</td>
+                    </tr>
+                    <tr class="group-end group-3">
+                        <td>1,000,000</td>
+                        <td class="price-col">$206.03 - $17135.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <footer class="footer">
+            <p>Estimates are calculated based on constant prompt and response lengths as specified.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Adding simple interaction for hover effects on table rows
+        document.addEventListener('DOMContentLoaded', () => {
+            const groups = ['group-1', 'group-2', 'group-3'];
+            
+            groups.forEach(group => {
+                const rows = document.querySelectorAll(`.${group}`);
+                
+                rows.forEach(row => {
+                    row.addEventListener('mouseenter', () => {
+                        rows.forEach(r => r.classList.add('highlighted'));
+                        // Highlight rowspan cells explicitly
+                        const firstRow = rows[0];
+                        const cells = firstRow.querySelectorAll('td[rowspan]');
+                        cells.forEach(cell => cell.classList.add('highlighted-cell'));
+                    });
+                    
+                    row.addEventListener('mouseleave', () => {
+                        rows.forEach(r => r.classList.remove('highlighted'));
+                        // Remove highlight from rowspan cells
+                        const firstRow = rows[0];
+                        const cells = firstRow.querySelectorAll('td[rowspan]');
+                        cells.forEach(cell => cell.classList.remove('highlighted-cell'));
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
